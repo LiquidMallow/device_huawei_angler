@@ -19,16 +19,6 @@
 #
 # Everything in this directory will become public
 
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/huawei/angler-kernel/Image.gz-dtb
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES := \
-    $(LOCAL_KERNEL):kernel
-
 PRODUCT_COPY_FILES += \
     device/huawei/angler/init.angler.rc:root/init.angler.rc \
     device/huawei/angler/init.angler.sensorhub.rc:root/init.angler.sensorhub.rc \
@@ -36,7 +26,6 @@ PRODUCT_COPY_FILES += \
     device/huawei/angler/fstab.angler:root/fstab.angler \
     device/huawei/angler/ueventd.angler.rc:root/ueventd.angler.rc \
     device/huawei/angler/init.angler.power.sh:system/bin/init.angler.power.sh
-
 
 PRODUCT_COPY_FILES += \
     device/huawei/angler/init.mcfg.sh:system/bin/init.mcfg.sh
@@ -52,7 +41,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
     device/huawei/angler/media_codecs.xml:system/etc/media_codecs.xml \
     device/huawei/angler/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-    device/huawei/angler/media_profiles.xml:system/etc/media_profiles.xml
+    device/huawei/angler/media_profiles.xml:system/etc/media_pra9b26ce5a50fde88a0f5d1dee004f312fe15da41ofiles.xml
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -128,7 +117,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
-
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
@@ -396,6 +384,10 @@ $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.m
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
 
+# B service adj transition
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.fw.bservice_enable=true \
+
 # facelock properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.facelock.black_timeout=400 \
@@ -410,3 +402,7 @@ $(call inherit-product-if-exists, vendor/qcom/gpu/msm8994/msm8994-gpu-vendor.mk)
 
 # copy wlan firmware
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4358/device-bcm.mk)
+
+# don't check verity on vendor partition as we don't compile it with the boot and system image
+# PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/soc.0/f9824900.sdhci/by-name/vendor
+
