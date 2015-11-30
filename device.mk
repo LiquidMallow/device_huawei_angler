@@ -364,21 +364,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-threads=2 \
     dalvik.vm.image-dex2oat-threads=4
 
-# Modem debugger
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += \
-    QXDMLogger
-
-PRODUCT_COPY_FILES += \
-    device/huawei/angler/init.angler.diag.rc.userdebug:root/init.angler.diag.rc
-
-# subsystem ramdump collection
+# Disable modem ramdumps
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.ssr.enable_ramdumps=1
-else
+    persist.sys.ssr.enable_ramdumps=0
+
 PRODUCT_COPY_FILES += \
     device/huawei/angler/init.angler.diag.rc.user:root/init.angler.diag.rc
-endif
 
 # Incoming number (b/23529711)
 PRODUCT_PROPERTY_OVERRIDES += \
