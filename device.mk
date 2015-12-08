@@ -387,6 +387,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # configure the HWUI memory limits
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
 
+# drmservice prop
+PRODUCT_PROPERTY_OVERRIDES += \
+drm.service.enabled=true
+
 # facelock properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.facelock.black_timeout=400 \
