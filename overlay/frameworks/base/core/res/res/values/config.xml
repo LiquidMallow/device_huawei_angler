@@ -371,7 +371,6 @@
          phone object irrespective of this config -->
     <bool name="config_switch_phone_on_voice_reg_state_change">false</bool>
 
-
     <!-- Use ERI text for network name on CDMA LTE -->
         <bool name="config_LTE_eri_for_network_name">false</bool>
 
@@ -419,9 +418,6 @@
     <!-- enable doze powersaving mode -->
     <bool name="config_enableAutoPowerModes">true</bool>
 
-    <!-- Whether device supports double tap to wake -->
-    <bool name="config_supportDoubleTapWake">true</bool>
-
     <!-- Whether WiFi display is supported by this device.
          There are many prerequisites for this feature to work correctly.
          Here are a few of them:
@@ -435,12 +431,19 @@
          * The device must be provisioned with HDCP keys (for protected content).
     -->
     <bool name="config_enableWifiDisplay">true</bool>
+    <!-- Whether device supports double tap to wake -->
+    <bool name="config_supportDoubleTapWake">true</bool>
 
     <!-- Enable the option to check proximity sensor when deciding whether to
          turn the screen on
          NOTE ! - Enable for devices that have a fast response proximity sensor -->
     <bool name="config_proximityCheckOnWake">true</bool>
     <integer name="config_proximityCheckTimeout">300</integer>
+
+    <!-- Hide Project Fi app unless it is being used -->
+    <string-array name="config_disabledUntilUsedPreinstalledCarrierApps">
+        <item>com.google.android.apps.tycho</item>
+    </string-array>    
 
     <!-- BatteryLED fast charge -->
     <integer name="config_chargingFastThreshold">1300000</integer>
