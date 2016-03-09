@@ -34,6 +34,11 @@ ENABLE_CPUSETS := true
 # Custom kernel toolchain
 TARGET_GCC_VERSION_ARM64 := 6.0
 
+# Inline kernel building
+TARGET_KERNEL_SOURCE := kernel/huawei/angler
+TARGET_KERNEL_CONFIG := saber_defconfig
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
