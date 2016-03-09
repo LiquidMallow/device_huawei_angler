@@ -85,6 +85,10 @@ on boot
     chmod 0664 /sys/devices/virtual/graphics/fb1/vendor_name
     chmod 0664 /sys/devices/virtual/graphics/fb1/product_description
 
+    # Grant permission to modify the color_temp setting
+    chown system graphics /sys/class/graphics/fb0/color_temp
+    chmod 0664 /sys/class/graphics/fb0/color_temp
+
     #Create QMUX deamon socket
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
