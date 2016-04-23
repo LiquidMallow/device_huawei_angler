@@ -31,14 +31,6 @@ TARGET_2ND_CPU_VARIANT := cortex-a7
 
 ENABLE_CPUSETS := true
 
-# Custom kernel toolchain
-TARGET_GCC_VERSION_ARM64 := 6.0
-
-# Inline kernel building
-TARGET_KERNEL_SOURCE := kernel/huawei/angler
-TARGET_KERNEL_CONFIG := saber_defconfig
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
@@ -138,13 +130,3 @@ WIFI_DRIVER_FW_PATH_AP := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 EXTENDED_FONT_FOOTPRINT := true
 
 -include vendor/huawei/angler/BoardConfigVendor.mk
-
-# Sabermod optimizations
-export CLANG_O3 := true
-export CORTEX_TUNINGS := true
-export ENABLE_GCCONLY := true
-export ENABLE_SANITIZE := true
-export GRAPHITE_OPTS := true
-export KRAIT_TUNINGS := false
-export STRICT_ALIASING := true
-export USE_PIPE := true
