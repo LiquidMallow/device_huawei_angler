@@ -379,12 +379,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.oem_unlock_supported=1
 
+# setup dalvik vm configs.
+$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
+
 # configure the HWUI memory limits
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
 
 # drmservice prop
 PRODUCT_PROPERTY_OVERRIDES += \
-drm.service.enabled=true
+    drm.service.enabled=true
 
 # facelock properties
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -395,8 +398,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.facelock.est_max_time=600 \
     ro.facelock.use_intro_anim=false
 
-# setup dalvik vm configs.
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
+# Enable B service adj transition
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.fw.bservice_enable=true \
+    ro.sys.fw.bservice_limit=5 \
+    ro.sys.fw.bservice_age=5000
 
 $(call inherit-product-if-exists, hardware/qcom/msm8994/msm8994.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8994/msm8994-gpu-vendor.mk)
