@@ -85,7 +85,7 @@ write /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq 302400
 write /sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq 1958400
 
 # input boost configuration
-write /sys/module/cpu_boost/parameters/input_boost_freq
+write /sys/module/cpu_boost/parameters/input_boost_freq "0:1344000 1:1344000 2:1344000 3:1344000 4:0 5:0 6:0 7:0"
 write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
 # Setting B.L scheduler parameters
