@@ -32,7 +32,7 @@ restorecon -R /sys/devices/system/cpu
 restorecon -R /sys/module/msm_thermal
 chmod 0664 /sys/module/msm_thermal/parameters/enabled
 write /sys/module/msm_thermal/parameters/enabled Y
-write /sys/module/msm_thermal/parameters/limit_temp_degC 75
+write /sys/module/msm_thermal/parameters/limit_temp_degC 68
 
 #LITTLE
 write /sys/devices/system/cpu/cpu0/online 1
@@ -108,7 +108,7 @@ write /sys/module/msm_thermal/core_control/enabled 0
 restorecon -R /sys/module/msm_thermal
 chmod 0664 /sys/module/msm_thermal/parameters/enabled
 write /sys/module/msm_thermal/parameters/enabled Y
-write /sys/module/msm_thermal/parameters/limit_temp_degC 75
+write /sys/module/msm_thermal/parameters/limit_temp_degC 68
 
 # change GPU initial power level from 305MHz(level 4) to 180MHz(level 5) for power savings
 write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
